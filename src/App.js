@@ -199,13 +199,13 @@ function App() {
         flex={1}
         ai={"center"}
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
+        image={CONFIG.SHOW_BACKGROUND ? "/config/images/OfficialPageBanner.png" : null}
       >
-        <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
+        <StyledLogo alt={"PageLogo"} src={"/config/images/pagelogowhite.png"} />
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"example"} src={"/config/images/example.gif"} />
+            <StyledImg alt={"PageDAO"} src={"/config/images/pagefavicon.jpeg"} />
           </s.Container>
           <s.SpacerLarge />
           <s.Container
