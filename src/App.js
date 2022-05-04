@@ -5,6 +5,8 @@ import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 
+
+
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
@@ -101,8 +103,8 @@ function App() {
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
-  const silverSupply = "0";
-  const diamondSupply = "0";
+  const silverSupply = 0;
+  const diamondSupply = 0;
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -261,7 +263,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              {silverSupply} Silver / {CONFIG.SILVER_MAX_SUPPLY} Total
+              {blockchain.smartContract._silverSupply()} Silver / {CONFIG.SILVER_MAX_SUPPLY} Total
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -274,7 +276,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(data.silverSupply) >= CONFIG.SILVER_MAX_SUPPLY ? (
+            {Number(blockchain.smartContract._silverSupply()) >= CONFIG.SILVER_MAX_SUPPLY ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
@@ -359,7 +361,6 @@ function App() {
                           e.preventDefault();
                           claimSilverNFTs();
                           getData();
-                          //increment silverSupply;
                         }}
                       >
                         {claimingNft ? "BUSY" : "BUY"}
