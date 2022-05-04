@@ -101,6 +101,8 @@ function App() {
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
+  const silverSupply = "0";
+  const diamondSupply = "0";
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -123,6 +125,7 @@ function App() {
     MARKETPLACE: "",
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: false,
+
   });
 
   const claimSilverNFTs = () => {
@@ -222,7 +225,16 @@ function App() {
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
         image={CONFIG.SHOW_BACKGROUND ? "/config/images/OfficialPageBanner.png" : null}
       >
-        <StyledLogo alt={"logo"} src={"/config/images/OfficialPageBanner.png"} />
+        <s.SpacerSmall />
+          <StyledImg alt={"example"} src={"/config/images/pagebanner1500x500.jpeg"} />
+          <s.SpacerSmall />
+          <s.TextTitle
+          style={{ textAlign: "center", color: "var(--accent-text)"}}
+          >
+          PageDAO's 2022 Membership NFTs grant access to the NFTBook Minter.
+          <s.SpacerSmall />
+
+          </s.TextTitle>
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
@@ -249,7 +261,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              {data.totalSupply} Silver / {CONFIG.SILVER_MAX_SUPPLY} Total
+              {silverSupply} Silver / {CONFIG.SILVER_MAX_SUPPLY} Total
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -262,7 +274,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(data.totalSupply) >= CONFIG.SILVER_MAX_SUPPLY ? (
+            {Number(data.silverSupply) >= CONFIG.SILVER_MAX_SUPPLY ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
@@ -284,8 +296,8 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 Silver PageDAO Membership NFT costs {CONFIG.SILVER_DISPLAY_COST}{" "}
-                  {CONFIG.NETWORK.SYMBOL}.
+                  {CONFIG.SILVER_DISPLAY_COST}{" "}
+                  {CONFIG.NETWORK.SYMBOL}
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription
@@ -347,6 +359,7 @@ function App() {
                           e.preventDefault();
                           claimSilverNFTs();
                           getData();
+                          //increment silverSupply;
                         }}
                       >
                         {claimingNft ? "BUSY" : "BUY"}
@@ -414,8 +427,8 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 Diamond PageDAO Membership NFT costs {CONFIG.DIAMOND_DISPLAY_COST}{" "}
-                  {CONFIG.NETWORK.SYMBOL}.
+                  {CONFIG.DIAMOND_DISPLAY_COST}{" "}
+                  {CONFIG.NETWORK.SYMBOL}
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription
@@ -503,7 +516,21 @@ function App() {
           <s.TextDescription
             style={{
               textAlign: "center",
-              color: "var(--primary-text)",
+              color: "var(--secondary-text)",
+              background: "black",
+            }}
+          >
+            The Diamond Membership grants the extra perk of a PageDAO-based white label minter site to be deployed to the site of the purchaser's choice.
+          </s.TextDescription>
+        </s.Container>
+        <s.SpacerSmall />
+        <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
+
+            <s.TextDescription
+            style={{
+              textAlign: "center",
+              color: "var(--secondary-text)",
+              background: "black",
             }}
           >
             Please make sure you are connected to the right network (
@@ -514,7 +541,8 @@ function App() {
           <s.TextDescription
             style={{
               textAlign: "center",
-              color: "var(--primary-text)",
+              color: "var(--secondary-text)",
+              background: "black",
             }}
           >
             We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
