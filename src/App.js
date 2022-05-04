@@ -112,7 +112,11 @@ function App() {
     NFT_NAME: "",
     SYMBOL: "",
     MAX_SUPPLY: "",
+    DIAMOND_MAX_SUPPLY: "",
+    SILVER_MAX_SUPPLY: "",
     WEI_COST: "",
+    DIAMOND_WEI_COST: "",
+    SILVER_WEI_COST: "",
     DISPLAY_COST: "",
     GAS_LIMIT: 0,
     MARKETPLACE: "",
@@ -131,6 +135,38 @@ function App() {
     setClaimingNft(true);
     blockchain.smartContract.methods
       .MintSilver()
+      .send({
+        gasLimit: String(totalGasLimit),
+        to: CONFIG.CONTRACT_ADDRESS,
+        from: blockchain.account,
+        value: totalCostWei,
+      })
+      .once("error", (err) => {
+        console.log(err);
+        setFeedback("Sorry, something went wrong please try again later.");
+        setClaimingNft(false);
+      })
+      .then((receipt) => {
+        console.log(receipt);
+        setFeedback(
+          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+        );
+        setClaimingNft(false);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
+  const claimDiamondNFTs = () => {
+    let cost = CONFIG.WEI_COST;
+    let gasLimit = CONFIG.GAS_LIMIT;
+    let totalCostWei = String(cost * mintAmount);
+    let totalGasLimit = String(gasLimit * mintAmount);
+    console.log("Cost: ", totalCostWei);
+    console.log("Gas limit: ", totalGasLimit);
+    setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
+    setClaimingNft(true);
+    blockchain.smartContract.methods
+      .MintDiamond()
       .send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
@@ -201,11 +237,11 @@ function App() {
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
         image={CONFIG.SHOW_BACKGROUND ? "/config/images/OfficialPageBanner.png" : null}
       >
-        <StyledLogo alt={"PageLogo"} src={"/config/images/page_dao_member_2022_silver.png"} />
+        <StyledLogo alt={"PageLogo"} src={"/config/images/wippy.png"} />
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"PageDAO"} src={"/config/images/page_dao_member_2022_silver"} />
+            <StyledImg alt={"PageDAO"} src={"/config/images/page_dao_member_2022_silver.png"} />
           </s.Container>
           <s.SpacerLarge />
           <s.Container
@@ -228,7 +264,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              {data.totalSupply} / {CONFIG.MAX_SUPPLY}
+              {data.totalSupply} / {CONFIG.TOTAL_MAX_SUPPLY}
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -241,7 +277,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+            {Number(data.totalSupply) >= CONFIG.TOTAL_MAX_SUPPLY ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
@@ -263,14 +299,14 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
+                  1 {CONFIG.SYMBOL} costs {CONFIG.DIAMOND_DISPLAY_COST}{" "}
                   {CONFIG.NETWORK.SYMBOL}.
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  Excluding gas fees.
+                  Excluding gas fees, Diamond Memberships cost 2.5ETH.
                 </s.TextDescription>
                 <s.SpacerSmall />
                 {blockchain.account === "" ||
@@ -288,7 +324,7 @@ function App() {
                     <StyledButton
                       onClick={(e) => {
                         e.preventDefault();
-                        dispatch(connect());
+                        claimDiamondNFTs();
                         getData();
                       }}
                     >
@@ -357,7 +393,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              {data.totalSupply} / {CONFIG.MAX_SUPPLY}
+              {data.totalSupply} / {CONFIG.TOTAL_MAX_SUPPLY}
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -370,7 +406,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+            {Number(data.totalSupply) >= CONFIG.TOTAL_MAX_SUPPLY ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
