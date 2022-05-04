@@ -237,7 +237,7 @@ function App() {
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
         image={CONFIG.SHOW_BACKGROUND ? "/config/images/OfficialPageBanner.png" : null}
       >
-        <StyledLogo alt={"PageLogo"} src={"/config/images/wippy.png"} />
+        <StyledLogo alt={"PageLogo"} src={"/config/images/bwpagebannersmall.png"} />
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
@@ -385,16 +385,16 @@ function App() {
               boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
             }}
           >
-            <s.TextTitle
-              style={{
-                textAlign: "center",
-                fontSize: 50,
-                fontWeight: "bold",
-                color: "var(--accent-text)",
-              }}
-            >
-              {data.totalSupply} / {CONFIG.TOTAL_MAX_SUPPLY}
-            </s.TextTitle>
+              <s.TextTitle
+                style={{
+                  textAlign: "center",
+                  fontSize: 50,
+                  fontWeight: "bold",
+                  color: "var(--accent-text)",
+                }}
+              >
+                {data.totalSupply} / {CONFIG.SILVER_MAX_SUPPLY}
+                </s.TextTitle>
             <s.TextDescription
               style={{
                 textAlign: "center",
@@ -406,7 +406,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(data.totalSupply) >= CONFIG.TOTAL_MAX_SUPPLY ? (
+            {Number(data.totalSupply) >= CONFIG.SILVER_MAX_SUPPLY ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
@@ -428,7 +428,7 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
+                  1 {CONFIG.SYMBOL} costs {CONFIG.SILVER_DISPLAY_COST}{" "}
                   {CONFIG.NETWORK.SYMBOL}.
                 </s.TextTitle>
                 <s.SpacerXSmall />
@@ -489,7 +489,7 @@ function App() {
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
                           e.preventDefault();
-                          MintSilverNFTs();
+                          MintDiamondNFTs();
                           getData();
                         }}
                       >
@@ -504,11 +504,7 @@ function App() {
           </s.Container>
           <s.SpacerLarge />
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg
-              alt={"example"}
-              src={"/config/images/example.gif"}
-              style={{ transform: "scaleX(-1)" }}
-            />
+            <StyledImg alt={"PageDAO"} src={"/config/images/page_dao_member_2022_diamond.png"} />
           </s.Container>
         </ResponsiveWrapper>
         <s.SpacerMedium />
