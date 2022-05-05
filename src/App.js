@@ -103,8 +103,6 @@ function App() {
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
-  const silverSupply = 0;
-  const diamondSupply = 0;
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -263,7 +261,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              {blockchain.smartContract._silverSupply()} Silver / {CONFIG.SILVER_MAX_SUPPLY} Total
+              Silver: {data.getSilverSupply} / {CONFIG.SILVER_MAX_SUPPLY} Total
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -276,7 +274,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(blockchain.smartContract._silverSupply()) >= CONFIG.SILVER_MAX_SUPPLY ? (
+            {Number(data.getSilverSupply) >= (CONFIG.SILVER_MAX_SUPPLY) ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
@@ -393,7 +391,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              {data.totalSupply} Diamond / {CONFIG.DIAMOND_MAX_SUPPLY} Total
+              {data.getiamondSupply} Diamond / {CONFIG.DIAMOND_MAX_SUPPLY} Total
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -406,7 +404,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(data.totalSupply) >= CONFIG.DIAMOND_MAX_SUPPLY ? (
+            {Number(data.getDiamondSupply) >= CONFIG.DIAMOND_MAX_SUPPLY ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
