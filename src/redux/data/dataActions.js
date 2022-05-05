@@ -25,18 +25,30 @@ export const fetchData = () => {
   return async (dispatch) => {
     dispatch(fetchDataRequest());
     try {
-      let totalSupply = await store
+      let silverSupply = await store
         .getState()
-        .blockchain.smartContract.methods.totalSupply()
+        .blockchain.smartContract.methods.getSilverSupply()
         .call();
+      let diamondSupply = 0;
+      try {
+        diamondSupply = await store
+        .getState()
+        .blockchain.smartContract.methods.getDiamondSupply()
+        .call();
+      }
+      catch (err) {
+        console.log(err)
+      }
+
       // let cost = await store
       //   .getState()
       //   .blockchain.smartContract.methods.cost()
       //   .call();
-
+      console.log("silversupply:",silverSupply);
       dispatch(
         fetchDataSuccess({
-          totalSupply,
+          silverSupply,
+          diamondSupply
           // cost,
         })
       );

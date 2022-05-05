@@ -261,7 +261,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              Silver: {data.getSilverSupply} / {CONFIG.SILVER_MAX_SUPPLY} Total
+              Silver: {data.silverSupply} / {CONFIG.SILVER_MAX_SUPPLY} Total
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -274,7 +274,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(data.getSilverSupply) >= (CONFIG.SILVER_MAX_SUPPLY) ? (
+            {Number(data.silverSupply) >= (CONFIG.SILVER_MAX_SUPPLY) ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
@@ -391,7 +391,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              {data.getiamondSupply} Diamond / {CONFIG.DIAMOND_MAX_SUPPLY} Total
+              Diamond: {data.diamondSupply} / {CONFIG.DIAMOND_MAX_SUPPLY} Total
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -404,7 +404,7 @@ function App() {
               </StyledLink>
             </s.TextDescription>
             <s.SpacerSmall />
-            {Number(data.getDiamondSupply) >= CONFIG.DIAMOND_MAX_SUPPLY ? (
+            {Number(data.diamondSupply) >= CONFIG.DIAMOND_MAX_SUPPLY ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
