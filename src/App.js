@@ -111,15 +111,15 @@ function App() {
       SYMBOL: "",
       ID: 0,
     },
-    NFT_NAME: "EpicDylan's First NFT Drop Tag",
-    SYMBOL: "TAG1",
-    TOTAL_MAX_SUPPLY: "",
-    SILVER_MAX_SUPPLY: "",
-    DIAMOND_MAX_SUPPLY: "",
+    NFT_NAME: "Official PageDAO Membership",
+    SYMBOL: "OPM",
+    TOTAL_MAX_SUPPLY: "10454",
+    SILVER_MAX_SUPPLY: "10000",
+    DIAMOND_MAX_SUPPLY: "13",
     DIAMOND_WEI_COST: "",
     SILVER_WEI_COST: "",
-    DIAMOND_DISPLAY_COST: 10,
-    SILVER_DISPLAY_COST: 0,
+    DIAMOND_DISPLAY_COST: 2.5,
+    SILVER_DISPLAY_COST: 0.025,
     DISPLAY_COST: 0,
     GAS_LIMIT: 0,
     MARKETPLACE: "",
@@ -223,22 +223,22 @@ function App() {
         flex={1}
         ai={"center"}
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        //image={CONFIG.SHOW_BACKGROUND ? "/config/images/OfficialPageBanner.png" : null}
+        image={CONFIG.SHOW_BACKGROUND ? "/config/images/OfficialPageBanner.png" : null}
       >
         <s.SpacerSmall />
-          <StyledImg alt={"example"} src={"/config/images/StowDylanAvatar.png"} />
+          <StyledImg alt={"example"} src={"/config/images/pagebanner1500x500.jpeg"} />
           <s.SpacerSmall />
           <s.TextTitle
           style={{ textAlign: "center", color: "var(--accent-text)"}}
           >
-          These NFTs are a prototype of a dAPP to be known as a drop tag. Users can claim one for free, or pay 10 $EVMOS for one. The only difference between them is that the paid one says it was paid for.
+          PageDAO's 2022 Membership NFTs grant access to the NFTBook Minter.
           <s.SpacerSmall />
 
           </s.TextTitle>
         <s.SpacerSmall />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"example"} src={"/config/images/StowDylanAvatar.png"} />
+            <StyledImg alt={"example"} src={"/config/images/page_dao_member_2022_silver.png"} />
           </s.Container>
           <s.SpacerLarge />
           <s.Container
@@ -261,7 +261,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              Free: {data.silverSupply} / {CONFIG.SILVER_MAX_SUPPLY} Total
+              Silver: {data.silverSupply} / {CONFIG.SILVER_MAX_SUPPLY} Total
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -391,7 +391,7 @@ function App() {
                 color: "var(--accent-text)",
               }}
             >
-              Paid: {data.diamondSupply} / {CONFIG.DIAMOND_MAX_SUPPLY} Total
+              Diamond: {data.diamondSupply} / {CONFIG.DIAMOND_MAX_SUPPLY} Total
             </s.TextTitle>
             <s.TextDescription
               style={{
@@ -506,12 +506,21 @@ function App() {
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg
               alt={"example"}
-              src={"/config/images/StowDylanAvatar.png"}
+              src={"/config/images/page_dao_member_2022_diamond.png"}
             />
           </s.Container>
         </ResponsiveWrapper>
         <s.SpacerMedium />
         <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
+          <s.TextDescription
+            style={{
+              textAlign: "center",
+              color: "var(--secondary-text)",
+              background: "black",
+            }}
+          >
+            The Diamond Membership grants the extra perk of a PageDAO-based white label minter site to be deployed to the site of the purchaser's choice.
+          </s.TextDescription>
         </s.Container>
         <s.SpacerSmall />
         <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
