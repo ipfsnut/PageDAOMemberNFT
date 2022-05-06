@@ -519,10 +519,10 @@ function App() {
               background: "black",
             }}
           >
-            The Diamond Membership grants the extra perk of a PageDAO-based white label minter site to be deployed to the site of the purchaser's choice.
+            *The Diamond Membership grants the same permissions as the Silver Membership, it just costs more.
           </s.TextDescription>
         </s.Container>
-        <s.SpacerSmall />
+
         <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
 
             <s.TextDescription
@@ -532,21 +532,9 @@ function App() {
               background: "black",
             }}
           >
-            Please make sure you are connected to the right network (
+            *Please make sure you are connected to the right network (
             {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
             Once you make the purchase, you cannot undo this action.
-          </s.TextDescription>
-          <s.SpacerSmall />
-          <s.TextDescription
-            style={{
-              textAlign: "center",
-              color: "var(--secondary-text)",
-              background: "black",
-            }}
-          >
-            We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
-            successfully mint your NFT. We recommend that you don't lower the
-            gas limit.
           </s.TextDescription>
         </s.Container>
       </s.Container>
