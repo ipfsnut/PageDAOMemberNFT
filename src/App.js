@@ -109,7 +109,7 @@ function App() {
     NETWORK: {
       NAME: "",
       SYMBOL: "",
-      ID: 137,
+      ID: 0,
     },
     NFT_NAME: "Official PageDAO Membership",
     SYMBOL: "OPM",
